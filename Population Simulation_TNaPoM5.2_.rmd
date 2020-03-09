@@ -1,0 +1,47 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+#based on The Nature and Power of Mathematics by Donald M. Davis chap 5.2
+
+#mother function: p=k*p*(1-p) 0<p<1
+```{r}
+func = function(k,p,n){
+  vec = c()
+    for(i in 1:n){
+      print(p)
+      vec=c(vec,p)
+      p=k*p*(1-p)
+    }
+  
+  xx = vec[-length(vec)]
+  yy = vec[-1]
+  
+  plot(x = xx, y = yy, xlab = expression("p"[n]) ,ylab = expression("p"[n+1]))
+  
+}
+
+```
+
+1. when 0<=k<=1, p approaches 0 irrespective initial p value
+```{r}
+func(0.8,0.5,15)
+```
+
+2. when 1<k<=3, p approaches k-1/k
+```{r}
+func(1.5,0.5,15) # nearer to 1/3
+print("------------")
+func(2.5,0.71,15) # nearer to 0.6
+print("------------")
+func(2.8,0.46,25) # nearer to 0.643
+```
+
+2. when k>3, the fixed point is repulsive
+  and when k<= 3.44 also satisfied, there is a cycle of period 2
+```{r}
+func(3.1,0.71,16) # further to 0.677
+print("------------")
+func(3.5,0.56,16) # further to 0.677
+```
+
