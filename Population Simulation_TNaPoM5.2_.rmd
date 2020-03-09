@@ -26,6 +26,8 @@ func = function(k,p,n){
 1. when 0<=k<=1, p approaches 0 irrespective initial p value
 ```{r}
 func(0.8,0.5,15)
+print("------------")
+func(1.0,0.5,15)
 ```
 
 2. when 1<k<=3, p approaches k-1/k
@@ -45,3 +47,4 @@ print("------------")
 func(3.5,0.56,16) # further to 0.677
 ```
 
+  

@@ -1,0 +1,63 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+#based on The Nature and Power of Mathematics by Donald M. Davis chap 5.2
+
+```{r}
+fun2 = function(k,p,n){
+  vec = c()
+  vecR = c()
+    for(i in 1:n){
+      #print(p)
+      vec=c(vec,p)
+      p=k*p*(1-p)
+      if (i>2) {
+        ratio = (vec[length(vec)-1]-vec[length(vec)-2])/(vec[length(vec)]-vec[length(vec)-1])
+        vecR =c(vecR,ratio)
+        
+        #print("Ratio: ")
+        print(ratio)
+      }
+    }
+  
+  xx = vec[-length(vec)]
+  yy = vec[-1]
+  
+  vec2 =(1: length(vecR))
+  
+  #plot(x = xx, y = yy, xlab = expression("p"[n]) ,ylab = expression("p"[n+1]))
+  
+  plot(x = vec2, y = vecR, xlab = "No." ,ylab = "Ratio")
+  
+  
+}
+```
+
+as k increases, the chaos occurs
+
+```{r}
+fun2(1.5, 0.5, 40)
+
+fun2(2.5, 0.5, 40)
+
+fun2(3.5, 0.5, 40)
+
+fun2(3.56, 0.5, 40)
+
+fun2(3.569, 0.5, 40)
+
+fun2(3.63, 0.5, 40)
+
+fun2(3.69, 0.5, 40)
+```
+
+```{r}
+fun2(3.79, 0.5, 40)
+
+fun2(3.88, 0.5, 40)
+print("-----------")
+fun2(4, 0.423, 40)
+```
+
